@@ -1,27 +1,64 @@
-const Node = require('./node');
+const Node = require("./node");
 
 class LinkedList {
-    constructor() {}
+  constructor() {
+    this.linkedList = [];
+    this.length = 0;
+    this._head = new Node();
+    this._tail = new Node();
+  }
 
-    append(data) {}
+  append(data) {
+    const appNode = new Node(data);
+    this.linkedList.push(appNode);
+    this.length++;
+    return this;
+  }
 
-    head() {}
+  head() {
+    return this.length === 0 ? null : this.linkedList[0].data;
+  }
 
-    tail() {}
+  tail() {
+    return this.length === 0 ? null : this.linkedList[this.length - 1].data;
+  }
 
-    at(index) {}
+  at(index) {
+    return this.linkedList[index].data;
+  }
 
-    insertAt(index, data) {}
+  insertAt(index, data) {
+    this.linkedList.splice(index, 0, new Node(data));
+    return this;
+  }
 
-    isEmpty() {}
+  isEmpty() {
+    return this.length === 0;
+  }
 
-    clear() {}
+  clear() {
+    this.linkedList = [];
+    this.length = 0;
+    return this;
+  }
 
-    deleteAt(index) {}
+  deleteAt(index) {
+    this.linkedList.splice(index, 1);
+    return this;
+  }
 
-    reverse() {}
+  reverse() {
+    this.linkedList.reverse();
+    return this;
+  }
 
-    indexOf(data) {}
+  indexOf(data) {
+    let indexOfLinkedList = -1;
+    this.linkedList.map((el, i) => {
+      if (el.data === data) indexOfLinkedList = i;
+    });
+    return indexOfLinkedList;
+  }
 }
 
 module.exports = LinkedList;
